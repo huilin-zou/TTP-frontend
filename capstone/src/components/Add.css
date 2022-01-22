@@ -1,0 +1,21 @@
+.welcome {
+  position: absolute
+  ;
+  margin-top: -5;
+    align-items: flex-end;
+  font-family: Lexend Exa;
+  font-style: normal;
+  font-weight: bold;
+  color: #228b22;
+}
+
+.header {
+  text-align: center;
+
+  font-family: Lexend Exa;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 22px;
+  color: #228b22;
+}
