@@ -22,3 +22,17 @@ app.use('/capstone',require('./routes/capstone'))
 app.listen(5000,()=>{
     console.log("server has started on port 5432")
 })  
+
+//add a subscription
+app.post("/Add",async(req,res)=>{
+    try {
+        const{name}=req.body;
+        const newSubscription=await pool.query(
+            "insert into sub_list(name) values ($1) returning *",
+            [name]
+        );
+        res.json(newSubscription.rows[0])
+    } catch (error) {
+        console.log(error.message)
+    }
+})

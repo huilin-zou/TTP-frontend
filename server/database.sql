@@ -6,3 +6,9 @@ CREATE TABLE userinfo(
     password varchar(255),
     email varchar(255)
 );
+
+CREATE TABLE sub_list(
+    sub_list_id serial primary key,
+    
+    user_id_fk integer REFERENCES userinfo(user_id)
+);
