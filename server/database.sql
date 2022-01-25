@@ -1,14 +1,16 @@
-create database capstone
+CREATE DATABASE capstone;
 
-CREATE TABLE userinfo(
-    user_id serial primary key,
-    username varchar(255),
-    password varchar(255),
-    email varchar(255)
+CREATE TABLE users (
+    user_id SERIAL PRIMARY KEY,
+    username VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL
 );
 
-CREATE TABLE sub_list(
-    sub_list_id serial primary key,
-    
-    user_id_fk integer REFERENCES userinfo(user_id)
-);
+CREATE TABLE sub (
+    sub_id SERIAL PRIMARY KEY,
+    typesub VARCHAR(255),
+    plan   VARCHAR(255),
+    duedate VARCHAR(255),
+    user_id_fk INTEGER REFERENCES users (user_id)
+); 
