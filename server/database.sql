@@ -7,10 +7,11 @@ CREATE TABLE users (
     email VARCHAR(255) NOT NULL
 );
 
-CREATE TABLE sub (
+CREATE TABLE subscription_details (
     sub_id SERIAL PRIMARY KEY,
-    typesub VARCHAR(255),
-    plan   VARCHAR(255),
+    sub_name VARCHAR(255) UNIQUE,
+    plan VARCHAR(255),
+    price DOUBLE PRECISION,
     duedate VARCHAR(255),
     user_id_fk INTEGER REFERENCES users (user_id)
-); 
+);

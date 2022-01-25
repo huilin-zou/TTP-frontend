@@ -3,6 +3,7 @@ const pool = require("../db");
 const bcrypt = require("bcrypt");
 const jwtGenerator = require("../utils/jwtGenerator");
 const validation = require("../middleware/validation");
+const authorization = require("../middleware/authorization");
 
 router.post("/register", validation, async (req, res) => {
     try {
@@ -41,15 +42,24 @@ router.post("/login", validation, async (req, res) => {
         }
 
         const validPassword = await bcrypt.compare(password, user.rows[0].password);
- 
+
         if(!validPassword) {
             return res.status(401).send("Password is incorrect")
         }
 
         const token = jwtGenerator(user.rows[0].user_id);
- 
+
         res.json({ token });
-    } catch (err) { 
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send("Server Error")
+    }
+});
+
+router.get("/is-verify", authorization, async (req, res) => {
+    try {
+        res.json(true);        
+    } catch (err) {
         console.error(err.message);
         res.status(500).send("Server Error")
     }
