@@ -12,6 +12,6 @@ CREATE TABLE subscription_details (
     sub_name VARCHAR(255) UNIQUE,
     plan VARCHAR(255),
     price DOUBLE PRECISION,
-    duedate VARCHAR(255),
+    duedate DATE DEFAULT CURRENT_DATE,
     user_id_fk INTEGER REFERENCES users (user_id)
 );

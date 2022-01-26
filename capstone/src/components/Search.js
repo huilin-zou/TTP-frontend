@@ -1,35 +1,64 @@
-import React,{useState} from 'react';
-import './SearchStyle.css'
+import React, { useState } from "react";
+import "./SearchStyle.css";
 
 
 export default function Search() {
-  const [searchTerm,setSearchTerm]=useState('')
-
-  const onSubmitForm=async(e)=>{
+  const [subName, setSubName] = useState("");
+  const [result, setResult] = useState("");
+  
+  const onSubmitForm = async (e) => {
     e.preventDefault();
+    //console.log("sub name",sub_name)
     try {
-      console.log("search term:",searchTerm)
-    } catch (error) {
-      console.log(error.message)
+      const response = await fetch(
+        `http://localhost:5000/subscription/${subName}`
+      );
+      if (response.ok) {
+        const jsonData = await response.json();
+        setResult(jsonData);
+        alert("The item you searched is already listed. Try another term.")
+       
+      }
+      else{
     }
+    } catch (error) {
+      console.log(error.message);
+    }
+    ;
+  };
+
+  const notFoundAddToList=async()=>{
+      
   }
-  return <div>
 
-    
-       <p className='search-header'>Search Subscriptions</p>
 
-        <div style={{paddingTop:"50px",paddingBottom:"20px",paddingLeft:"30px"}}>
-          
-<input
-value={searchTerm}
-onChange={e=>setSearchTerm(e.target.value)}
-className='search-input' placeholder='Enter here'></input>
-        </div>
+  
+  return (
+    <div>
+      <p className="search-header">Search Subscriptions</p>
 
-        <div style={{float:"right",paddingTop:"20px"}}><button 
+      <div
+        style={{
+          paddingTop: "50px",
+          paddingBottom: "20px",
+          paddingLeft: "30px",
+        }}
+      >
+        <input
+          value={subName}
+          onChange={(e) => setSubName(e.target.value)}
+          className="search-input"
+          placeholder=" Enter here"
+        ></input>
+      </div>
+
+      <button
         onClick={onSubmitForm}
-        className='search-submit-btn'
-style={{color:"white"}}>Search</button></div>
-
-  </div>;
+        className="search-submit-btn"
+        style={{ color: "white" }}
+      >
+        Search
+      </button>
+    </div>
+  );
 }

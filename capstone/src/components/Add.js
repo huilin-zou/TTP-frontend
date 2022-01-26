@@ -1,22 +1,34 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import "./AddStyle.css";
 
+
 export default function Add() {
-  const [input,setInput]=useState('')
-  
-  const onSubmitForm=async(e)=>{
-    e.preventDefault()
+  const [sub_name, setSubName] = useState("");
+  const [plan, setPlan] = useState("");
+  const [price, setPrice] = useState("");
+  const [duedate, setDueDate] = useState("");
+  //const [user_id_fk, setUserIdFk] = useState("");
+
+  const onSubmitForm = async (e) => {
+    e.preventDefault();
     try {
-      console.log(input)
+      const body = { sub_name, plan, price, duedate};
+      const response = await fetch("http://localhost:5000/subscription", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+      });
+
+      window.location = "/Add";
     } catch (error) {
-      console.log(error.message)
+      console.log(error.message);
     }
-  }
+  };
+
   return (
     <div>
-     
-
-      <p className="add-header">Add Subscriptions</p>
+      
+       <p className="header">Add Subscriptions</p>
 
       <div
         style={{
@@ -25,20 +37,48 @@ export default function Add() {
           paddingLeft: "30px",
         }}
       >
-        <input 
-        value={input}
-        onChange={e=>setInput(e.target.value)}
-        className="add-input" placeholder="Enter here"></input>
+        <div className="div-input" />
+        <input
+          value={sub_name}
+          onChange={(e) => setSubName(e.target.value)}
+          className="add-input"
+          placeholder=" Name of your subscription"
+        ></input>
+        <div className="div-input" />
+        <input
+          value={plan}
+          onChange={(e) => setPlan(e.target.value)}
+          className="add-input"
+          placeholder=" Plan period: weekly/monthly/yearly"
+        ></input>
+        <div className="div-input" />
+        <input
+          value={price}
+          onChange={(e) => setPrice(e.target.value)}
+          className="add-input"
+          placeholder=" Price $ "
+        ></input>
+        <div className="div-input" />
+        <input
+          value={duedate}
+          onChange={(e) => setDueDate(e.target.value)}
+          className="add-input"
+          placeholder=" Due Date yyyy-mm-dd"
+        ></input>
+   
       </div>
-
-      <div style={{ float: "right", paddingTop: "20px" }}>
-        <button 
-        onClick={onSubmitForm}
-        className="add-submit-btn" style={{ color: "white" }}>
+      <div />
+      <div 
+      className="submit-btn"
+      style={{ float: "right", paddingTop: "20px" }}>
+        <button
+          onClick={onSubmitForm}
+          className="add-submit-btn"
+          style={{ color: "white" }}
+        >
           Add
         </button>
       </div>
     </div>
   );
 }
-

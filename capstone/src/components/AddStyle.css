@@ -1,33 +1,40 @@
-.add-header{
-    
-  width: 240px;
+.header {
+  width: auto;
   height: 23px;
-  display: block;
+
   font-family: Lexend Exa;
   font-style: normal;
   font-weight: bold;
   font-size: 30px;
-  line-height: 22px;
-color: #228B22;
-justify-content: center;
-line-height: 22px;
-text-align: center;
-margin-left: 42%
+
+  color: #228b22;
+  justify-content: center;
+  align-items: center;
+  text-align: center
 }
 
-.add-input{
+.add-input {
   border-radius: 10px;
-  background: #DBD9D9;
-  width: 100%;
+  background: #dbd9d9;
+  width: 40%;
   height: 50px;
   font-size: 20px;
 }
 
-.add-submit-btn{
+.add-submit-btn {
   width: 102px;
-height: 45px;
-font-size: 20px;
-background: #228B22;
-border-radius: 10px;
+  height: 45px;
+  font-size: 20px;
+  background: #228b22;
+  border-radius: 10px;
+}
 
+.div-input {
+  padding-bottom: 40px;
+}
+
+.submit-btn {
+  position: absolute;
+
+  padding-left: 42%;
 }
