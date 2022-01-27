@@ -1,0 +1,17 @@
+.loginHeader{
+    font-family: 'Lexend Exa', sans-serif;
+    padding-top: 70px;
+    padding-bottom: 50px;
+    text-align: center;
+}
+
+.loginForm{
+    padding-top: 80px;
+    
+}
+
+#loginBtn{
+    background-color: #228B22;
+    color: white;
+   
+}

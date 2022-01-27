@@ -1,6 +1,7 @@
 import { use } from "bcrypt/promises";
 import React, { useState } from "react";
 import { useInRouterContext } from "react-router-dom";
+import "./RegisterStyle.css"
 export default function Login(){
    
 
@@ -23,7 +24,7 @@ export default function Login(){
                
                
               }
-              else{alert("user exist")}
+              else{alert("credential invalid")}
              } catch (err) {
                  console.error(err.message)
              }   
@@ -46,23 +47,30 @@ export default function Login(){
 
 return(
         <div>
-        <form className='container' >
+
+          <p className="header">Register</p>
+        <form className='container'
+         >
          
           <div>
-            <label htmlFor="username">username</label>
+            <label style={{paddingTop:"80px"}} className="label-signup" htmlFor="username">Username</label>
             <input onChange={handlechangeusername} className="form-control" type="text" name="username" />
           </div>
           <div>
-            <label htmlFor="email"> Create email</label>
+            <label className="label-signup"  htmlFor="email"> Create email</label>
             <input onChange={handlechangeEmail} className="form-control" type="email" name=" create email" />
           </div>
           <div>
-            <label htmlFor="password"> Create Password</label>
+            <label className="label-signup" htmlFor="password"> Create Password</label>
             <input onChange={handlechangepassword} className="form-control" type="password" name=" create password" />
           </div>
 
-          <div class="d-grid gap-2">
-            <button onClick={handlesubmit} className="btn btn-block btn-primary" type="Register">Register</button>
+          <div 
+          id="submitBtn"
+          class="d-grid gap-2">
+            <button
+            id="registerBtn"
+            onClick={handlesubmit} className="btn btn-block btn-primary" type="Register">Register</button>
           </div>
         </form>
         </div>

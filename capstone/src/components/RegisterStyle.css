@@ -1,0 +1,21 @@
+.container{
+    width: 70%;
+padding-left: 10%;
+text-align: left;
+}
+
+.label-signup{
+    padding-right: 5%;
+    padding-top: 20px;
+}
+
+#registerBtn{
+    width: 140px;
+    background-color: #228B22;
+    text-align: center;
+}
+
+#submitBtn{
+    padding-top: 60px;
+    justify-content: center;
+}

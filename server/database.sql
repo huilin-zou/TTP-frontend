@@ -9,7 +9,7 @@ CREATE TABLE users (
 
 CREATE TABLE subscription_details (
     sub_id SERIAL PRIMARY KEY,
-    sub_name VARCHAR(255) UNIQUE,
+    sub_name VARCHAR(255) NOT NULL,
     plan VARCHAR(255),
     price DOUBLE PRECISION,
     duedate DATE DEFAULT CURRENT_DATE,

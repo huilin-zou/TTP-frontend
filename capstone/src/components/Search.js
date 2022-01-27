@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import "./SearchStyle.css";
-
+import SearchField from "react-search-field";
 
 export default function Search() {
   const [subName, setSubName] = useState("");
   const [result, setResult] = useState("");
-  
+
   const onSubmitForm = async (e) => {
     e.preventDefault();
     //console.log("sub name",sub_name)
@@ -16,23 +16,16 @@ export default function Search() {
       if (response.ok) {
         const jsonData = await response.json();
         setResult(jsonData);
-        alert("The item you searched is already listed. Try another term.")
-       
+        alert("The item you searched is already listed. Try another term.");
+      } else {alert("Result not found, would you like to add it to your list?")
       }
-      else{
-    }
     } catch (error) {
       console.log(error.message);
     }
-    ;
   };
 
-  const notFoundAddToList=async()=>{
-      
-  }
+  const notFoundAddToList = async () => {};
 
-
-  
   return (
     <div>
       <p className="search-header">Search Subscriptions</p>
@@ -44,12 +37,14 @@ export default function Search() {
           paddingLeft: "30px",
         }}
       >
-        <input
+      
+       <input
           value={subName}
           onChange={(e) => setSubName(e.target.value)}
           className="search-input"
           placeholder=" Enter here"
         ></input>
+      
       </div>
 
       <button

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Navigate } from 'react-router-dom';
+import "./LoginStyle.css"
 function Login()
 {
     const [username, setusername] = useState("")
@@ -15,7 +16,7 @@ function Login()
              body: JSON.stringify({username,password})
          });
          if (response.ok) {
-          window.location="/"
+          window.location="/Sub"
            
            
           }
@@ -37,20 +38,29 @@ function Login()
 
     return(<>
 
-    <h2>Login</h2>
-    <form>
-        <label>
+    <h2 className="header" style={{paddingLeft:"90px"}}>Login</h2>
+    <form className="loginForm" style={{paddingLeft:"90px"}}>
+        <label style={{paddingRight:"10px"}}>
             username
         </label>
-        <input type="text"onChange={handlechangeusername}></input>
-        <label>
+
+      
+        <input 
+        style={{height:"40px"}}
+        type="text"onChange={handlechangeusername}></input>
+       
+        <br></br>
+        <label style={{paddingTop:"50px",paddingRight:"10px"}}>
             Password
         </label>
-        <input type="password" onChange={handlechangepassword}/>
+        <input
+        style={{height:"40px"}} type="password" onChange={handlechangepassword}/>
     </form>
-    <button type="submit" onClick={handlesubmit} className="btn btn-primary btn-block">
+    <div style={{paddingTop:"30px",paddingLeft:"90px"}}>
+    <button id="loginBtn" type="submit" onClick={handlesubmit} className="btn btn-block">
         Log in
     </button>
+    </div>
     </>);
 
 
