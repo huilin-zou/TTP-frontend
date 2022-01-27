@@ -1,13 +1,19 @@
 import React, { Fragment, useEffect, useState } from "react";
 import "./Sub.css";
-const Sub = () => {
-  const [subscription, setSubscription] = useState([]);
+import Edit from "./Edit"
 
+
+const Sub = () => {
+  
+  const [subscription, setSubscription] = useState([]);
+ 
   const deleteSub = async (sub_id) => {
+   // console.log("id",sub_id)
     try {
         
         const deleteSubscription = await fetch(`http://localhost:5000/subscription/${sub_id}`, {
             method: "DELETE",
+            
         });
         
         setSubscription(subscription.filter((subscription_details) => subscription_details.sub_id!== sub_id));
@@ -18,22 +24,28 @@ const Sub = () => {
 
   const getSubs = async () => {
     try {
-      const response = await fetch("http://localhost:5000/subscription");
+      const response = await fetch("http://localhost:5000/subscription")
       const jsonData = await response.json();
       setSubscription(jsonData);
     } catch (err) {
       console.log(err.message);
     }
   };
+
+
   useEffect(() => {
     getSubs();
   }, []);
+
+  //console.log("sub ",subscription)
   return (
     <Fragment>
       <p className="header">Your Subscriptions</p>
 
       <div>
-        {subscription.map((subscription_details) => {
+        {subscription.map((subscription_details )=>{
+
+         
           return (
             <div style={{paddingTop:"100px"}} key={subscription_details.sub_id}>
               <p>{subscription_details.sub_name}</p>
@@ -50,7 +62,7 @@ const Sub = () => {
                   Delete
                 </button>
               
-         <button className="btn">Edit</button>
+         <Edit subscription_details={subscription_details}/>
 
               <hr></hr>
             </div>
