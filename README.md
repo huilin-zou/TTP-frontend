@@ -54,5 +54,6 @@ UI designer
 - [ ] Edit
     - [ ] Fix Edit button bugs
     - [ ] allows users to edit their subscription duedates
-
+- [ ] Search
+    - [ ] smooth transition and user-friendly design to redirect to Add Subscription page
 
